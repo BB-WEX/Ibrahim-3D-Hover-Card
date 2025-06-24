@@ -23,12 +23,11 @@ body {
     width: 400px;
     height: 400px;
     padding: 1rem;
-    border-radius: 20%;
+    border-radius: 80px;
     transition: 0.5s;
     background-color: greenyellow;
 }
 
-/* Give Glass Effect later */
 .InnerCard {
     position: absolute;
     backface-visibility: hidden;
@@ -37,8 +36,10 @@ body {
     align-items: flex-start;
     width: 400px;
     height: 400px;
-    border-radius: 20% 80% 20% 20% / 19% 79% 20% 20%;
-    background-color: rgb(189, 238, 117);
+    border-radius: 80px 320px 80px 80px / 80px 320px 80px 80px;
+    background-color: transparent;
+    backdrop-filter: blur(0px) saturate(150%) brightness(0.9);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     transition: 0.5s;
 }
 
@@ -111,9 +112,26 @@ body {
     width: 300px;
 }
 
+.ExpandDesc{
+    transform: translateY(100px);
+    overflow: hidden;
+    display: flex;
+    font-size: smaller;
+    transition: all 0.5s;
+    max-height: 0px;
+    width: 380px;
+    opacity: 0%;
+}
+
+.ExpandDesc h1{
+    text-wrap: wrap;
+    text-wrap-style: balance;
+}
+
 .Btns {
     position: absolute;
     display: flex;
+    align-items: center;
     perspective: 1000px;
     bottom: 30px;
     width: 90%;
@@ -151,9 +169,14 @@ body {
 }
 
 .ExpandBtn h1{
+    transition: 0.5s;
     margin-left: -5px;
 }
 
+.ExpandBtn .Arrow{
+    transition: 0.5s;
+    transform: rotate(180deg) translateY(3px);
+}
 
 .HoverCard:hover {
     transform: rotate3d(20, 40, -1, 30deg);
@@ -175,19 +198,36 @@ body {
 
 
 .HoverCard:hover .fa {
-    transform: translate(15px, -10px) translateZ(50px);
-    box-shadow: 0px 16px;
+    transform: translate(15px, -20px) translateZ(50px);
+    box-shadow: 0px 22px 14px rgba(0, 0, 0, 0.3);
 }
+
+/* Class Toggles */
+.Expanded{
+    height: 800px;
+}
+
+.Arrow.Expanded{
+    transform: rotate(0deg) translateY(-20px);
+    height: 0px;
+}
+
+.ExpandDesc.Expanded{
+    max-height: 200px;
+    opacity: 100%;
+}
+
+
 
 /* Awesome fonts */
 .fa {
     text-decoration: none;
     text-align: center;
     background: white;
-    color: yellowgreen;
+    color: rgb(118, 158, 38);
     border-radius: 50%;
     padding: 10px;
     width: 15px;
-    box-shadow: 0px 2px;
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
 }
